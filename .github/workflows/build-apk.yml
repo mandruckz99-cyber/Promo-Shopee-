@@ -27,16 +27,12 @@ jobs:
           java-version: 21
 
       - name: Install project packages
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install
-          fi
+        run: npm install --legacy-peer-deps --no-audit --no-fund
 
+      
       - name: Install Capacitor
-        run: npm install @capacitor/core@^7 @capacitor/cli@^7 @capacitor/android@^7
-
+        run: npm install @capacitor/core@^7 @capacitor/cli@^7 @capacitor/android@^7 --legacy-peer-deps --no-audit --no-fund
+        
       - name: Build website
         run: npm run build
 
